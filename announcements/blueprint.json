@@ -1,0 +1,36 @@
+{
+  "name": "KiyroAnnounce",
+  "author": "Sayam",
+  "version": "1.1.0",
+  "description": "Adds a panel-wide announcement system for administrators to communicate with users.",
+  "features": ["nodejs"],
+
+  "directory": {
+    "api/": "api/",
+    "views/": "views/"
+  },
+
+  "routes": {
+    "admin": [
+      {
+        "path": "/announcements",
+        "component": "AdminAnnouncements",
+        "name": "Announcements",
+        "icon": "IconMegaphone"
+      }
+    ]
+  },
+
+  "injections": {
+    "//p/react/components/dashboard/DashboardContainer.tsx": [
+      {
+        "location": "import",
+        "code": "import Announcements from '@/extensions/yourname/announcements/views/Announcements';"
+      },
+      {
+        "location": "after:className={'my-10'}>",
+        "code": "<Announcements />"
+      }
+    ]
+  }
+}
